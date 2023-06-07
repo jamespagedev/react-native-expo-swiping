@@ -1,7 +1,6 @@
 import React from "react";
-import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
-import { ScreenColor, ScreenHome } from "@app/screens";
+import { ScreenColor, ScreenHome, ScreenNoSlide } from "@app/screens";
 import { frontendNavigations } from "@app/utils";
 
 const Stack = createStackNavigator();
@@ -50,6 +49,11 @@ export default function StackMain() {
           title: frontendNavigations.color.screenTitle,
           ...rightToLeftAnimation,
         }}
+      />
+      <Stack.Screen
+        name={frontendNavigations.noSlide.route as never}
+        component={ScreenNoSlide}
+        options={{ title: frontendNavigations.noSlide.screenTitle }}
       />
     </Stack.Navigator>
   );

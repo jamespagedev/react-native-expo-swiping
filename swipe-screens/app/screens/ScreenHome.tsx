@@ -44,9 +44,27 @@ export default function ScreenHome(): JSX.Element {
   const navigation = useNavigation<StackNavigationProp<any>>();
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.mainFont}>Select a Color</Text>
+      <Pressable
+        style={{
+          width: "100%",
+          // marginHorizontal: 40,
+          paddingVertical: 10,
+          backgroundColor: "#cdcdcd",
+          borderRadius: 2,
+        }}
+        onPress={() =>
+          navigation.navigate(frontendNavigations.noSlide.route as never)
+        }
+      >
+        <Text style={{ textAlign: "center", color: "dodgerblue" }}>
+          Go To No Slide Screen
+        </Text>
+      </Pressable>
+      <Text style={{ ...styles.mainFont, marginTop: 20, marginBottom: 10 }}>
+        Select a Color
+      </Text>
       <FlatList
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{ paddingBottom: 120 }}
         style={{ width: "100%" }}
         data={data}
         renderItem={({ item }) => <Item color={item} navigation={navigation} />}

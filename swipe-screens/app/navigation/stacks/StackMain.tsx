@@ -1,8 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import ScreenHome from "@app/screens/ScreenHome";
-import ScreenColor from "@app/screens/ScreenColor";
-import { frontendNavigations } from "@app/utils/HttpRequests";
+import { ScreenColor, ScreenHome } from "@app/screens";
+import { frontendNavigations } from "@app/utils";
 
 const Stack = createStackNavigator();
 

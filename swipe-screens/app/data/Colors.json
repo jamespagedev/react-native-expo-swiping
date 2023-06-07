@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Red",
+    "text": "#ffffff",
+    "background": "#ff0000"
+  },
+  {
+    "title": "Green",
+    "text": "#000000",
+    "background": "#00ff00"
+  },
+  {
+    "title": "Blue",
+    "text": "#ffffff",
+    "background": "#0000ff"
+  },
+  {
+    "title": "Purple",
+    "text": "#ffffff",
+    "background": "#800080"
+  },
+  {
+    "title": "Yellow",
+    "text": "#000000",
+    "background": "#ffff00"
+  },
+  {
+    "title": "Cyan",
+    "text": "#000000",
+    "background": "#00ffff"
+  },
+  {
+    "title": "Magenta",
+    "text": "#000000",
+    "background": "#ff00ff"
+  },
+  {
+    "title": "Lime",
+    "text": "#000000",
+    "background": "#00ff00"
+  },
+  {
+    "title": "Silver",
+    "text": "#000000",
+    "background": "#c0c0c0"
+  },
+  {
+    "title": "Gray",
+    "text": "#ffffff",
+    "background": "#808080"
+  },
+  {
+    "title": "Brown",
+    "text": "#ffffff",
+    "background": "#a52a2a"
+  },
+  {
+    "title": "Dodger Blue",
+    "text": "#000000",
+    "background": "#1e90ff"
+  },
+  {
+    "title": "Olive",
+    "text": "#ffffff",
+    "background": "#808000"
+  },
+  {
+    "title": "Peru",
+    "text": "#000000",
+    "background": "#cd853f"
+  }
+]

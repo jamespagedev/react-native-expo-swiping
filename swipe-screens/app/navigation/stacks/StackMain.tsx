@@ -1,4 +1,5 @@
 import React from "react";
+import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ScreenColor, ScreenHome } from "@app/screens";
 import { frontendNavigations } from "@app/utils";
@@ -6,6 +7,22 @@ import { frontendNavigations } from "@app/utils";
 const Stack = createStackNavigator();
 
 export default function StackMain() {
+  const rightToLeftAnimation = {
+    cardStyleInterpolator: ({ current, layouts }: any) => {
+      return {
+        cardStyle: {
+          transform: [
+            {
+              translateX: current.progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: [layouts.screen.width, 0],
+              }),
+            },
+          ],
+        },
+      };
+    },
+  };
   return (
     <Stack.Navigator
       initialRouteName={frontendNavigations.home.route as never}
@@ -16,6 +33,9 @@ export default function StackMain() {
         headerLeftContainerStyle: { paddingLeft: 10 },
         headerTitleStyle: { color: "#ffffff" },
         headerTintColor: "#ffffff",
+        gestureResponseDistance: 20,
+        gestureEnabled: true,
+        gestureDirection: "horizontal",
       }}
     >
       <Stack.Screen
@@ -26,7 +46,10 @@ export default function StackMain() {
       <Stack.Screen
         name={frontendNavigations.color.route as never}
         component={ScreenColor}
-        options={{ title: frontendNavigations.color.screenTitle }}
+        options={{
+          title: frontendNavigations.color.screenTitle,
+          ...rightToLeftAnimation,
+        }}
       />
     </Stack.Navigator>
   );

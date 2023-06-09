@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
+import type { StackNavigationProp } from "@react-navigation/stack";
 import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { data } from "@app/data";
 import { frontendNavigations } from "@app/utils";
@@ -24,7 +24,7 @@ const Item = ({ color, navigation }: any): JSX.Element => {
       <Pressable
         style={{ margin: 0, padding: 0, backgroundColor: "#ffffff" }}
         onPress={() =>
-          navigation.navigate(frontendNavigations.color.route as never, {
+          navigation.navigate(frontendNavigations.firstSlide.route as never, {
             color,
           })
         }
@@ -53,7 +53,7 @@ export default function ScreenHome(): JSX.Element {
           borderRadius: 2,
         }}
         onPress={() =>
-          navigation.navigate(frontendNavigations.noSlide.route as never)
+          navigation.navigate(frontendNavigations.firstNoSlide.route as never)
         }
       >
         <Text style={{ textAlign: "center", color: "dodgerblue" }}>

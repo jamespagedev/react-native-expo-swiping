@@ -1,60 +1,87 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { ScreenColor, ScreenHome, ScreenNoSlide } from "@app/screens";
+import {
+  ScreenFirstNoSlide,
+  ScreenFirstSlide,
+  ScreenHome,
+  ScreenSecondNoSlide,
+  ScreenSecondSlide,
+} from "@app/screens";
 import { frontendNavigations } from "@app/utils";
 
-const Stack = createStackNavigator();
+const MainStack = createStackNavigator();
+
+const rightToLeftAnimation = {
+  cardStyleInterpolator: ({ current, layouts }: any) => {
+    return {
+      cardStyle: {
+        transform: [
+          {
+            translateX: current.progress.interpolate({
+              inputRange: [0, 1],
+              outputRange: [layouts.screen.width, 0],
+            }),
+          },
+        ],
+      },
+    };
+  },
+};
+
+const screenSliderRoutes = new Set([
+  frontendNavigations.firstSlide.route,
+  frontendNavigations.secondSlide.route,
+]);
 
 export default function StackMain() {
-  const rightToLeftAnimation = {
-    cardStyleInterpolator: ({ current, layouts }: any) => {
-      return {
-        cardStyle: {
-          transform: [
-            {
-              translateX: current.progress.interpolate({
-                inputRange: [0, 1],
-                outputRange: [layouts.screen.width, 0],
-              }),
-            },
-          ],
-        },
-      };
-    },
-  };
   return (
-    <Stack.Navigator
+    <MainStack.Navigator
       initialRouteName={frontendNavigations.home.route as never}
-      screenOptions={{
-        headerTitleAlign: "center",
-        headerStyle: { backgroundColor: "#434343" },
-        headerRightContainerStyle: { paddingRight: 10 },
-        headerLeftContainerStyle: { paddingLeft: 10 },
-        headerTitleStyle: { color: "#ffffff" },
-        headerTintColor: "#ffffff",
-        gestureResponseDistance: 20,
-        gestureEnabled: true,
-        gestureDirection: "horizontal",
+      screenOptions={({ route }) => {
+        return {
+          headerTitleAlign: "center",
+          headerStyle: { backgroundColor: "#434343" },
+          headerRightContainerStyle: { paddingRight: 10 },
+          headerLeftContainerStyle: { paddingLeft: 10 },
+          headerTitleStyle: { color: "#ffffff" },
+          headerTintColor: "#ffffff",
+          gestureResponseDistance: 20,
+          gestureEnabled: screenSliderRoutes.has(route.name) ? true : false,
+          gestureDirection: "horizontal",
+        };
       }}
     >
-      <Stack.Screen
+      <MainStack.Screen
         name={frontendNavigations.home.route as never}
         component={ScreenHome}
         options={{ title: frontendNavigations.home.screenTitle }}
       />
-      <Stack.Screen
-        name={frontendNavigations.color.route as never}
-        component={ScreenColor}
+      <MainStack.Screen
+        name={frontendNavigations.firstNoSlide.route as never}
+        component={ScreenFirstNoSlide}
+        options={{ title: frontendNavigations.firstNoSlide.screenTitle }}
+      />
+      <MainStack.Screen
+        name={frontendNavigations.secondNoSlide.route as never}
+        component={ScreenSecondNoSlide}
+        options={{ title: frontendNavigations.secondNoSlide.screenTitle }}
+      />
+      <MainStack.Screen
+        name={frontendNavigations.firstSlide.route as never}
+        component={ScreenFirstSlide}
         options={{
-          title: frontendNavigations.color.screenTitle,
+          title: frontendNavigations.firstSlide.screenTitle,
           ...rightToLeftAnimation,
         }}
       />
-      <Stack.Screen
-        name={frontendNavigations.noSlide.route as never}
-        component={ScreenNoSlide}
-        options={{ title: frontendNavigations.noSlide.screenTitle }}
+      <MainStack.Screen
+        name={frontendNavigations.secondSlide.route as never}
+        component={ScreenSecondSlide}
+        options={{
+          title: frontendNavigations.secondSlide.screenTitle,
+          ...rightToLeftAnimation,
+        }}
       />
-    </Stack.Navigator>
+    </MainStack.Navigator>
   );
 }

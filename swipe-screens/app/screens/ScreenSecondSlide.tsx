@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function ScreenNoSlide(): JSX.Element {
+export default function ScreenSecondSlide(): JSX.Element {
   return (
     <View style={styles.container}>
-      <Text>screen with no slide</Text>
+      <Text>Second Slide Screen</Text>
     </View>
   );
 }
@@ -12,6 +12,7 @@ export default function ScreenNoSlide(): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
     justifyContent: "center",
     alignItems: "center",
   },
